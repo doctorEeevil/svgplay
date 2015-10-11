@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Test</title>
+    <title>Traffic Lights</title>
     <script src="./trafficlights.js" type="text/javascript"></script>
   </head>
   <body>
    <p>
-    Hello.
    </p>
    <div>
      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500px" height="400px">
@@ -17,7 +16,7 @@
        <circle cx="350" cy="100" r="48" id="greenlight"
 	       fill="darkgreen" stroke="black" stroke-width="3" />
        <circle cx="50" cy="100" r="25" id="starter" 
-	       onclick="turn_light('greenlight', 'on')"
+	       onclick="cycle_lights()"
 	       fill="dimgray" stroke="black" stroke-width="3" />
      </svg>
    </div>
