@@ -1,31 +1,41 @@
 // alert("Javascript file loaded.");
-var current_color = "redlight";
-
-var lights = {
-    redlight:    {off: 'firebrick',     on: 'orangered'},
-    yellowlight: {off: 'darkgoldenrod', on: 'yellow'},
-    greenlight:  {off: 'darkgreen',     on:'lime'}
+var Light = function(off, on, id) {
+    this.off = off;
+    this.on = on;
+    this.id = id;
+    this.turn_light('off');
 };
 
-var get_color = function(light_id, state) {
-    return lights[light_id][state];
+Light.prototype.get_color = function(on_off) {
+    return this[on_off];
 };
-var turn_light = function(light_id, state) {
-    var elem = document.getElementById(light_id);
-    elem.setAttribute("fill", get_color(light_id, state))
+
+Light.prototype.turn_light = function(on_off) {
+    var elem = document.getElementById(this.id);
+    elem.setAttribute("fill", this.get_color(on_off))
 };
-var cycle_lights = function () {
-    turn_light(current_color, "off");
-    switch (current_color) {
+
+var TrafficLight = function() {
+    this.redlight = new Light('firebrick', 'orangered', 'redlight');  
+    this.yellowlight = new Light('darkgoldenrod', 'yellow', 'yellowlight');
+    this.greenlight = new Light('darkgreen', 'lime', 'greenlight');
+    this.currentlight = 'redlight';
+    this.cycle_lights();
+};
+
+TrafficLight.prototype.cycle_lights = function() {
+    this[this.currentlight].turn_light("off");
+    switch (this.currentlight) {
     case "redlight":
-	current_color = "greenlight";
+	this.currentlight = "greenlight";
 	break;
     case "greenlight":
-	current_color = "yellowlight";
+	this.currentlight = "yellowlight";
 	break;
     case "yellowlight":
-	current_color = "redlight";
+	this.currentlight = "redlight";
 	break;
     }
-    turn_light(current_color, "on");
+    this[this.currentlight].turn_light("on");
 };
+
