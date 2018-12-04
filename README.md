@@ -5,3 +5,6 @@
 
 ### (sadly the javascript does not work here on github)
 [<img src="trafficlights.svg?sanitize=0">]()
+
+### perhaps it works when served from elsewhere (doubtful)
+[<img src="https://nooron.com/img/trafficlights.svg">]()
