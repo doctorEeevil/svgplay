@@ -4,21 +4,9 @@
     <title>Traffic Lights</title>
     <script src="./trafficlights.js" type="text/javascript"></script>
   </head>
-  <body onload="window.mylights = new TrafficLight();">
-   <p>
-   </p>
-   <div>
-     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500px" height="400px">
-       <circle cx="150" cy="100" r="48" id="redlight"
-	       fill="firebrick" stroke="black" stroke-width="3" />
-       <circle cx="250" cy="100" r="48" id="yellowlight"
-	       fill="darkgoldenrod" stroke="black" stroke-width="3" />
-       <circle cx="350" cy="100" r="48" id="greenlight"
-	       fill="darkgreen" stroke="black" stroke-width="3" />
-       <circle cx="50" cy="100" r="25" id="starter" 
-	       onclick="window.mylights.cycle_lights()"
-	       fill="dimgray" stroke="black" stroke-width="3" />
-     </svg>
-   </div>
+  <body>
+    <button onclick="new TrafficLight();">
+      Make Traffic Light
+    </button>
   </body>
 </html>
