@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500px" height="400px" onload="on_load(evt)">
+  <circle cx="150" cy="100" r="48" id="redlight" fill="firebrick" stroke="black" stroke-width="3"/>
+  <circle cx="250" cy="100" r="48" id="yellowlight" fill="yellow" stroke="black" stroke-width="3"/>
+  <circle cx="350" cy="100" r="48" id="greenlight" fill="darkgreen" stroke="black" stroke-width="3"/>
+  <circle  onclick="window.myLights.cycle_lights()" cx="50" cy="100" r="25" id="starter" fill="dimgray" stroke="black" stroke-width="3"/>
+  <text onclick="window.myLights.cycle_lights()" x="50" y="105" text-anchor="middle" stroke="white" stroke-width="1px">↻</text>
+  <script>
+    // This was adapted from https://github.com/doctorEeevil/svgplay
+    // see http://wiki.inkscape.org/wiki/index.php/SVG_with_javascript
+    var Light = function(off, on, id, svg_elem, x_offset) {
+      this.off = off;
+      this.on = on;
+      this.id = id;
+      this.circle = document.querySelector("#"+id);
+      this.turn_light('off');
+    };
+
+    Light.prototype.get_color = function(on_off) {
+      return this[on_off];
+    };
+
+    Light.prototype.turn_light = function(on_off) {
+      this.circle.setAttribute("fill", this.get_color(on_off))
+    };
+
+    var TrafficLight = function() {
+      var x_jump = 100;
+      this.svg_elem = document.querySelector('svg')
+      this.redlight = new Light('firebrick', 'orangered','redlight', this.svg_elem);
+      this.yellowlight = new Light('darkgoldenrod', 'yellow', 'yellowlight', this.svg_elem);
+      this.greenlight = new Light('darkgreen', 'lime', 'greenlight', this.svg_elem);
+      this.currentlight = 'redlight';
+      this.cycle_lights();
+    };
+
+    TrafficLight.prototype.cycle_lights = function() {
+      this[this.currentlight].turn_light("off");
+      switch (this.currentlight) {
+        case "redlight":
+          this.currentlight = "greenlight";
+          break;
+        case "greenlight":
+          this.currentlight = "yellowlight";
+          break;
+        case "yellowlight":
+          this.currentlight = "redlight";
+          break;
+      }
+      this[this.currentlight].turn_light("on");
+    };
+
+    var on_load = function(evt) {
+      window.myLights = new TrafficLight();
+    }
+  </script>
+ </svg>
