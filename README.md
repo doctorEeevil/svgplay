@@ -7,4 +7,4 @@
 [<img src="trafficlights.svg?sanitize=0">]()
 
 ### perhaps it works when served from elsewhere (doubtful)
-[<img src="https://nooron.com/img/trafficlights.svg">]()
+[<img src="https://nooron.com/img/trafficlights.svg?sanitize=0">]()
